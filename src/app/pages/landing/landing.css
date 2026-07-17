@@ -1,0 +1,174 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 48px 24px;
+}
+
+.grid {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 56px;
+  align-items: center;
+}
+
+/* --- Columna izquierda --- */
+.pitch h1 {
+  font-size: clamp(56px, 8vw, 76px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 10px 0 0;
+}
+
+.pitch h1 span {
+  color: var(--seal);
+}
+
+.lede {
+  max-width: 44ch;
+  margin: 14px 0 30px;
+  font-size: 17px;
+  color: var(--ink-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.actions .btn {
+  min-width: 148px;
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin: 40px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+
+.specs dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.specs dd {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* --- Credencial en blanco (vista previa) --- */
+.preview {
+  display: flex;
+  justify-content: center;
+}
+
+.credential {
+  width: 100%;
+  max-width: 380px;
+  padding: 22px;
+  background-color: var(--card);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  transform: rotate(-1.2deg);
+}
+
+.credential header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.state {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px dashed var(--rule);
+  border-radius: 2px;
+  padding: 3px 7px;
+}
+
+.rows {
+  padding: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rows div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.rows span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Campos por llenar: líneas en blanco, como un formato sin firmar. */
+.rows i {
+  height: 9px;
+  width: 78%;
+  border-radius: 2px;
+  background: repeating-linear-gradient(90deg, var(--rule) 0 8px, transparent 8px 13px);
+}
+
+.rows i.short {
+  width: 60%;
+}
+
+.rows i.tiny {
+  width: 34%;
+}
+
+.mrz {
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--rule);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .preview {
+    order: -1;
+  }
+
+  .credential {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .actions .btn {
+    flex: 1;
+  }
+}

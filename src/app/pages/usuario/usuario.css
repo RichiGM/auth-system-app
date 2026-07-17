@@ -1,0 +1,209 @@
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 36px;
+}
+
+.bar .eyebrow span {
+  color: var(--seal);
+}
+
+.status {
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+/* --- La credencial emitida --- */
+.credential {
+  background-color: var(--card);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--seal);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  animation: stamp 0.34s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.cred-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.state {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stamp);
+  border: 1px solid var(--stamp);
+  border-radius: 2px;
+  padding: 3px 8px;
+  transform: rotate(-3deg);
+}
+
+.rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 32px;
+  margin: 0;
+  padding: 26px 24px;
+}
+
+.rows > div:first-child,
+.rows > div:nth-child(4) {
+  grid-column: 1 / -1;
+}
+
+.rows dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.rows dd {
+  margin: 6px 0 0;
+  font-size: 15px;
+  word-break: break-word;
+}
+
+.rows dd.name {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.rows dd.mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rol {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--seal);
+  background-color: rgba(35, 64, 142, 0.08);
+  border: 1px solid rgba(35, 64, 142, 0.24);
+  border-radius: 2px;
+  padding: 5px 9px;
+}
+
+.empty {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+/* --- Zona legible por máquina --- */
+.mrz {
+  padding: 18px 24px 22px;
+  background-color: #f4f6fa;
+  border-top: 1px solid var(--rule);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.mrz-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.mrz-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.mrz-actions button {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--seal);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.mrz-actions button:hover {
+  border-color: var(--seal);
+  background-color: rgba(35, 64, 142, 0.06);
+}
+
+.mrz-actions button:focus-visible {
+  outline: 2px solid var(--seal);
+  outline-offset: 1px;
+}
+
+.token {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--ink);
+  word-break: break-all;
+  user-select: all;
+}
+
+/* --- Claims --- */
+.claims {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+
+.claims pre {
+  margin: 10px 0 0;
+  padding: 16px;
+  background-color: var(--ink);
+  color: #d7dcea;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+@keyframes stamp {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(6px);
+  }
+}
+
+@media (max-width: 620px) {
+  .rows {
+    grid-template-columns: 1fr;
+  }
+
+  .rows > div {
+    grid-column: 1 / -1;
+  }
+}

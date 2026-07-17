@@ -1,0 +1,85 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(18, 24, 43, 0.55);
+  backdrop-filter: blur(2px);
+  animation: fade 0.16s ease-out;
+}
+
+.panel {
+  width: 100%;
+  max-width: 430px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-modal);
+  /* Filo superior: el color del sello, como el margen de un formato oficial. */
+  border-top: 3px solid var(--seal);
+  animation: rise 0.2s ease-out;
+}
+
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.panel-head h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.panel-subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.close {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink-soft);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.close:hover {
+  color: var(--ink);
+  border-color: var(--rule);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--seal);
+  outline-offset: 1px;
+}
+
+.panel-body {
+  padding: 22px 24px 24px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}

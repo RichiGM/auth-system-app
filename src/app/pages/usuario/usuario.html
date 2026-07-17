@@ -1,0 +1,71 @@
+<main class="page">
+  <header class="bar">
+    <p class="eyebrow">Auth<span>System</span> · Mi cuenta</p>
+    <button type="button" class="btn btn-ghost" (click)="logout()">Cerrar sesión</button>
+  </header>
+
+  @if (loading()) {
+    <p class="status">Cargando tu cuenta…</p>
+  } @else if (loadError()) {
+    <p class="form-error" role="alert"><span>!</span>{{ loadError() }}</p>
+  } @else {
+    <article class="credential">
+      <header class="cred-head">
+        <p class="eyebrow">Credencial de acceso</p>
+        <span class="state">Activa</span>
+      </header>
+
+      <dl class="rows">
+        <div>
+          <dt>Nombre completo</dt>
+          <dd class="name">{{ auth.user()?.nombre || '—' }}</dd>
+        </div>
+        <div>
+          <dt>Correo electrónico</dt>
+          <dd>{{ auth.user()?.email || '—' }}</dd>
+        </div>
+        <div>
+          <dt>Identificador</dt>
+          <dd class="mono">{{ auth.user()?.id || '—' }}</dd>
+        </div>
+        <div>
+          <dt>Roles asignados</dt>
+          <dd class="roles">
+            @for (rol of auth.user()?.roles; track rol) {
+              <span class="rol">{{ rol }}</span>
+            } @empty {
+              <span class="empty">Sin roles asignados</span>
+            }
+          </dd>
+        </div>
+        <div>
+          <dt>Vigente hasta</dt>
+          <dd>{{ auth.tokenExpiresAt() | date: "d 'de' MMMM, HH:mm:ss" }}</dd>
+        </div>
+      </dl>
+
+      <!-- Zona legible por máquina: el JWT que firma esta credencial. -->
+      <footer class="mrz">
+        <div class="mrz-head">
+          <p class="eyebrow">Token JWT</p>
+          <div class="mrz-actions">
+            <button type="button" (click)="toggleToken()">
+              {{ tokenVisible() ? 'Ocultar' : 'Mostrar' }}
+            </button>
+            <button type="button" (click)="copyToken()">
+              {{ copied() ? 'Copiado' : 'Copiar' }}
+            </button>
+          </div>
+        </div>
+        <code class="token">{{ tokenText() }}</code>
+      </footer>
+    </article>
+
+    @if (tokenVisible() && claims(); as payload) {
+      <section class="claims">
+        <p class="eyebrow">Claims dentro del token</p>
+        <pre>{{ payload | json }}</pre>
+      </section>
+    }
+  }
+</main>

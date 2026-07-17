@@ -1,0 +1,19 @@
+<div class="backdrop" (click)="onBackdropClick($event)">
+  <div class="panel" #panel role="dialog" aria-modal="true" [attr.aria-labelledby]="titleId()">
+    <header class="panel-head">
+      <div>
+        <h2 [id]="titleId()">{{ title() }}</h2>
+        @if (subtitle()) {
+          <p class="panel-subtitle">{{ subtitle() }}</p>
+        }
+      </div>
+      <button type="button" class="close" (click)="close()" aria-label="Cerrar ventana">
+        &times;
+      </button>
+    </header>
+
+    <div class="panel-body">
+      <ng-content />
+    </div>
+  </div>
+</div>

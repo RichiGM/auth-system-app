@@ -1,0 +1,57 @@
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  @if (serverError()) {
+    <p class="form-error" role="alert"><span>!</span>{{ serverError() }}</p>
+  }
+
+  <div class="field">
+    <label for="reg-nombre">Nombre completo</label>
+    <input
+      id="reg-nombre"
+      type="text"
+      autocomplete="name"
+      formControlName="nombreCompleto"
+      [class.invalid]="showError('nombreCompleto')"
+    />
+    @if (showError('nombreCompleto')) {
+      <p class="field-error">Escribe tu nombre completo (máximo 200 caracteres).</p>
+    }
+  </div>
+
+  <div class="field">
+    <label for="reg-email">Correo electrónico</label>
+    <input
+      id="reg-email"
+      type="email"
+      autocomplete="email"
+      formControlName="email"
+      [class.invalid]="showError('email')"
+    />
+    @if (showError('email')) {
+      <p class="field-error">
+        Escribe un correo con formato válido, por ejemplo nombre&#64;dominio.com.
+      </p>
+    }
+  </div>
+
+  <div class="field">
+    <label for="reg-password">Contraseña</label>
+    <input
+      id="reg-password"
+      type="password"
+      autocomplete="new-password"
+      formControlName="password"
+      [class.invalid]="showError('password')"
+    />
+    @if (showError('password')) {
+      <p class="field-error">
+        Usa al menos 8 caracteres, con una mayúscula, una minúscula, un número y un símbolo.
+      </p>
+    }
+  </div>
+
+  <p class="hint">Ejemplo de contraseña válida: <code>Password.123</code></p>
+
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="submitting()">
+    {{ submitting() ? 'Creando cuenta…' : 'Crear cuenta' }}
+  </button>
+</form>

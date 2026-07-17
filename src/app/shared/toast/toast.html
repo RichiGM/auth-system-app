@@ -1,0 +1,7 @@
+@if (toasts.current(); as toast) {
+  <div class="toast" [class.error]="toast.tone === 'error'" role="status" aria-live="polite">
+    <span class="mark">{{ toast.tone === 'ok' ? '✓' : '!' }}</span>
+    <p>{{ toast.text }}</p>
+    <button type="button" (click)="toasts.dismiss()" aria-label="Descartar aviso">&times;</button>
+  </div>
+}

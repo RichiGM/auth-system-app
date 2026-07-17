@@ -1,0 +1,68 @@
+<main class="page">
+  <div class="grid">
+    <section class="pitch">
+      <p class="eyebrow">Identity · JWT · ASP.NET Core</p>
+      <h1>Auth<span>System</span></h1>
+      <p class="lede">
+        Crea una cuenta o inicia sesión para obtener tu credencial firmada y ver los roles que la
+        API te asigna.
+      </p>
+
+      <div class="actions">
+        <button type="button" class="btn btn-primary" (click)="open('registro')">Registro</button>
+        <button type="button" class="btn btn-secondary" (click)="open('login')">Login</button>
+      </div>
+
+      <dl class="specs">
+        <div>
+          <dt>Autenticación</dt>
+          <dd>Bearer JWT</dd>
+        </div>
+        <div>
+          <dt>Vigencia</dt>
+          <dd>60 minutos</dd>
+        </div>
+        <div>
+          <dt>Roles</dt>
+          <dd>Usuario · Administrador</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- Vista previa de la credencial: lo mismo que verás con datos reales al entrar. -->
+    <aside class="preview" aria-hidden="true">
+      <div class="credential">
+        <header>
+          <p class="eyebrow">Credencial de acceso</p>
+          <span class="state">Sin emitir</span>
+        </header>
+        <div class="rows">
+          <div><span>Nombre</span><i></i></div>
+          <div><span>Correo</span><i class="short"></i></div>
+          <div><span>Roles</span><i class="tiny"></i></div>
+        </div>
+        <footer class="mrz">••••••••••••••••••••••••••••••••••••••••••••••••••••••</footer>
+      </div>
+    </aside>
+  </div>
+</main>
+
+@if (dialog() === 'registro') {
+  <app-modal
+    title="Crear cuenta"
+    subtitle="Tus datos se envían a la API de Identity."
+    (closed)="close()"
+  >
+    <app-register-form (registered)="onRegistered($event)" />
+  </app-modal>
+}
+
+@if (dialog() === 'login') {
+  <app-modal
+    title="Iniciar sesión"
+    subtitle="Usa el correo y la contraseña de tu cuenta."
+    (closed)="close()"
+  >
+    <app-login-form (loggedIn)="onLoggedIn()" />
+  </app-modal>
+}
