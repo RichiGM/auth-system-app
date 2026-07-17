@@ -2,10 +2,6 @@ import { Component, inject, output, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 
-/**
- * Las reglas de contraseña replican las de Identity en Program.cs:
- * 8 caracteres, mayúscula, minúscula, dígito y símbolo.
- */
 @Component({
   selector: 'app-register-form',
   imports: [ReactiveFormsModule],

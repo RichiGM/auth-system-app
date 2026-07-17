@@ -20,7 +20,6 @@ export class Usuario implements OnInit {
   protected readonly tokenVisible = signal(false);
   protected readonly copied = signal(false);
 
-  /** El JWT completo, o su versión abreviada mientras está oculto. */
   protected readonly tokenText = computed(() => {
     const token = this.auth.token() ?? '';
     if (this.tokenVisible()) {
@@ -29,7 +28,6 @@ export class Usuario implements OnInit {
     return token.slice(0, 24) + '·'.repeat(48) + token.slice(-12);
   });
 
-  /** Claims del token, para mostrar de dónde sale la información. */
   protected readonly claims = computed(() => {
     const token = this.auth.token();
     return token ? decodeJwt(token) : null;
@@ -57,7 +55,6 @@ export class Usuario implements OnInit {
     setTimeout(() => this.copied.set(false), 2000);
   }
 
-  /** Paso 5: cerrar sesión y volver a la landing. */
   protected logout(): void {
     this.auth.logout().subscribe({
       next: () => {

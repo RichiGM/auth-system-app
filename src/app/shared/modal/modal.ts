@@ -10,10 +10,6 @@ import {
 } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
 
-/**
- * Ventana modal accesible: cierra con Escape o con clic en el fondo,
- * mueve el foco al abrir y devuelve el foco al cerrar.
- */
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.html',

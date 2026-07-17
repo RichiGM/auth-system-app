@@ -15,7 +15,6 @@
   align-items: center;
 }
 
-/* --- Columna izquierda --- */
 .pitch h1 {
   font-size: clamp(56px, 8vw, 76px);
   font-weight: 700;
@@ -67,7 +66,6 @@
   font-weight: 500;
 }
 
-/* --- Credencial en blanco (vista previa) --- */
 .preview {
   display: flex;
   justify-content: center;
@@ -125,7 +123,6 @@
   color: var(--ink-soft);
 }
 
-/* Campos por llenar: líneas en blanco, como un formato sin firmar. */
 .rows i {
   height: 9px;
   width: 78%;

@@ -35,13 +35,11 @@ export class Landing {
     this.dialog.set(null);
   }
 
-  /** Paso 2 del enunciado: avisar y volver a la landing. */
   protected onRegistered(message: string): void {
     this.close();
     this.toasts.show(`${message} Ya puedes iniciar sesión.`);
   }
 
-  /** Paso 4: sesión iniciada, se pasa a la ruta protegida. */
   protected onLoggedIn(): void {
     this.close();
     this.router.navigate(['/usuario']);

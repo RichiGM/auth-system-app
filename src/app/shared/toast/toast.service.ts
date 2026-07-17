@@ -5,7 +5,6 @@ export interface ToastMessage {
   tone: 'ok' | 'error';
 }
 
-/** Avisos breves y no bloqueantes (confirmaciones de registro, cierre de sesión). */
 @Injectable({ providedIn: 'root' })
 export class ToastService {
   readonly current = signal<ToastMessage | null>(null);

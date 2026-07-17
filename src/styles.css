@@ -1,11 +1,4 @@
-/* ===========================================================
-   Auth System — sistema de diseño
-   Dirección: "documento oficial / credencial".
-   Tipografía: superfamilia IBM Plex (Sans, Sans Condensed, Mono).
-   =========================================================== */
-
 :root {
-  /* Color */
   --ink: #12182b;
   --ink-soft: #5a6580;
   --paper: #e9ecf2;
@@ -15,12 +8,10 @@
   --stamp: #a6301e;
   --rule: #c9d0de;
 
-  /* Tipografía */
   --font-body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   --font-display: 'IBM Plex Sans Condensed', 'IBM Plex Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
 
-  /* Forma */
   --radius: 4px;
   --shadow-card: 0 1px 2px rgba(18, 24, 43, 0.06), 0 12px 32px rgba(18, 24, 43, 0.08);
   --shadow-modal: 0 24px 60px rgba(18, 24, 43, 0.28);
@@ -40,7 +31,6 @@ body {
 body {
   margin: 0;
   background-color: var(--paper);
-  /* Retícula tenue: el papel pautado de un formato oficial. */
   background-image:
     linear-gradient(rgba(35, 64, 142, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(35, 64, 142, 0.05) 1px, transparent 1px);
@@ -61,7 +51,6 @@ h3 {
   margin: 0;
 }
 
-/* --- Etiquetas de campo, estilo formato impreso --- */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -72,7 +61,6 @@ h3 {
   margin: 0;
 }
 
-/* --- Botones --- */
 .btn {
   font-family: var(--font-body);
   font-size: 15px;
@@ -132,7 +120,6 @@ h3 {
   width: 100%;
 }
 
-/* --- Formularios --- */
 .field {
   display: flex;
   flex-direction: column;

@@ -19,7 +19,6 @@
   background-color: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow-modal);
-  /* Filo superior: el color del sello, como el margen de un formato oficial. */
   border-top: 3px solid var(--seal);
   animation: rise 0.2s ease-out;
 }

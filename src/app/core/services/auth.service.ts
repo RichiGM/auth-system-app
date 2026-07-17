@@ -11,19 +11,15 @@ export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly api = `${environment.apiUrl}/auth`;
 
-  /** Token JWT vigente (o null). Se rehidrata desde localStorage al recargar. */
   readonly token = signal<string | null>(this.readStoredToken());
 
-  /** Datos del usuario autenticado, tal como los devuelve /api/auth/me. */
   readonly user = signal<CurrentUser | null>(null);
 
-  /** Única fuente de verdad para rutas protegidas y para la UI. */
   readonly isAuthenticated = computed(() => {
     const token = this.token();
     return token !== null && !isExpired(token);
   });
 
-  /** Fecha de expiración del token, leída del claim `exp`. */
   readonly tokenExpiresAt = computed(() => {
     const token = this.token();
     return token ? expirationOf(token) : null;
@@ -46,7 +42,6 @@ export class AuthService {
     );
   }
 
-  /** Carga el perfil del usuario autenticado. */
   loadCurrentUser(): Observable<CurrentUser> {
     return this.http.get<CurrentUser>(`${this.api}/me`).pipe(
       tap((user) => this.user.set(user)),
@@ -54,15 +49,10 @@ export class AuthService {
     );
   }
 
-  /**
-   * Cierra sesión: invalida el refresh token en la API y limpia el estado local.
-   * La API responde texto plano, por eso `responseType: 'text'`.
-   */
   logout(): Observable<string> {
     return this.http.post(`${this.api}/logout`, {}, { responseType: 'text' }).pipe(
       tap(() => this.clearSession()),
       catchError((error) => {
-        // Aunque la API falle, la sesión local debe quedar limpia.
         this.clearSession();
         return toReadableError(error);
       }),
@@ -90,7 +80,6 @@ export class AuthService {
   }
 }
 
-/** Decodifica el payload de un JWT (base64url) sin librerías externas. */
 export function decodeJwt(token: string): Record<string, unknown> | null {
   try {
     const payload = token.split('.')[1];
@@ -117,7 +106,6 @@ function isExpired(token: string): boolean {
   return expiresAt === null || expiresAt.getTime() <= Date.now();
 }
 
-/** Traduce cualquier fallo HTTP a un mensaje que el usuario pueda entender. */
 function toReadableError(error: unknown): Observable<never> {
   if (!(error instanceof HttpErrorResponse)) {
     return throwError(() => new Error('Ocurrió un error inesperado.'));
